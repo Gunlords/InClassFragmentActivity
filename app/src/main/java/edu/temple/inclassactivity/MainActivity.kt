@@ -3,6 +3,7 @@ package edu.temple.inclassactivity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -13,7 +14,12 @@ class MainActivity : AppCompatActivity() {
         val imageArray = IntArray(typedArray.length()) {typedArray.getResourceId(it, 0)}
         typedArray.recycle()
 
-        // Attach an instance of ImageDisplayFragment using factory method
+
+            supportFragmentManager.beginTransaction()
+                .replace(android.R.id.content, ImageDisplayFragment.newInstance(imageArray))
+                .commit()
+        }
 
     }
-}
+
+
